@@ -1,50 +1,59 @@
-// DADOS DOS PROFISSIONAIS
+// DADOS FOCADOS EXCLUSIVAMENTE EM TRABALHOS DOMÉSTICOS / RENDA EXTRA
 const professionalsData = [
   {
     id: 1,
-    name: "Carlos Silva",
-    category: "reparos",
+    name: "Maria das Graças",
+    category: "limpeza",
     rating: 5,
     location: "São Paulo - SP",
-    keywords: ["eletricista", "fiação", "quadro de luz", "tomadas"],
-    desc: "Eletricista residencial com verificação ativa na plataforma."
+    keywords: ["diária", "faxina", "limpeza pesada", "organização"],
+    desc: "Ofereço serviços de limpeza residencial completa para renda extra nos finais de semana e folgas."
   },
   {
     id: 2,
-    name: "Ana Souza",
-    category: "aulas",
+    name: "Luciana Alves",
+    category: "passadoria",
     rating: 5,
     location: "São Paulo - SP",
-    keywords: ["matemática", "reforço", "física", "ensino fundamental"],
-    desc: "Professora particular de exatas para ensino fundamental e médio."
+    keywords: ["passar roupa", "passadoria", "organização de guarda-roupa"],
+    desc: "Passo roupas por peça ou diária. Experiência com roupas delicadas e ternos."
   },
   {
     id: 3,
-    name: "Roberto Oliveira",
-    category: "cuidados",
+    name: "Joaquim Ramos",
+    category: "jardim",
     rating: 4,
     location: "Guarulhos - SP",
-    keywords: ["barbeiro", "corte", "barba", "domicílio"],
-    desc: "Atendimento de barbearia no conforto da sua casa."
+    keywords: ["jardinagem", "corta grama", "poda", "quintal"],
+    desc: "Realizo manutenção de jardins, poda de plantas e limpeza de quintais para reforçar a renda."
+  },
+  {
+    id: 4,
+    name: "Carlos Eduardo",
+    category: "manutencao",
+    rating: 5,
+    location: "São Paulo - SP",
+    keywords: ["marido de aluguel", "trocar torneira", "instalar chuveiro", "montagem de móveis"],
+    desc: "Ajudo com pequenos reparos residenciais, troca de lâmpadas e montagem de móveis simples."
   }
 ];
 
-// DADOS DOS TESTADORES / FEEDBACKS (Slide 9 do MVP)
+// DADOS DOS TESTADORES / FEEDBACKS (Focados em serviços domésticos)
 const reviewsData = [
   {
     author: "Sibelle Ramos",
     rating: 4,
-    comment: "Achei o aplicativo muito interessante, mas sinto que ele pode melhorar adicionando palavras-chave na aba de busca."
+    comment: "Achei a ideia excelente para encontrar pessoas do bairro para passar roupa! A busca por palavras-chave ajudou bastante a achar quem passa por diária."
   },
   {
     author: "Michel Leonardo",
     rating: 2,
-    comment: "O app precisa de atualizações para ser lançado ao público."
+    comment: "O app precisa de mais filtros por bairro para facilitar encontrar ajudantes domésticos bem perto de casa."
   },
   {
     author: "Matheus Miranda",
     rating: 3,
-    comment: "Contratei o serviço do eletricista daqui, mas não soube muito bem realizar o serviço elétrico da minha casa. Pelo menos está funcionando."
+    comment: "Contratei ajuda para arrumar a fiação simples do quintal. O serviço funcionou, mas a pessoa demorou um pouco mais do que o previsto."
   }
 ];
 
@@ -57,9 +66,9 @@ const foundersData = [
   "Vitor do Amaral"
 ];
 
-// MENSAGENS SIMULADAS
+// MENSAGENS SIMULADAS DE TRABALHO DOMÉSTICO
 let chatMessages = [
-  { sender: "pro", text: "Olá! Sou o Carlos Silva. Como posso te ajudar com o serviço elétrico hoje?" }
+  { sender: "pro", text: "Olá! Sou a Maria das Graças. Trabalho com diárias de limpeza e organização da casa. Como posso te ajudar?" }
 ];
 
 // TROCA DE ABAS
@@ -81,7 +90,7 @@ function switchTabByName(tabId) {
   switchTab(tabId, targetBtn);
 }
 
-// RENDERIZAR CARDS DOS PROFISSIONAIS
+// RENDERIZAR CARDS DOS AJUDANTES DOMÉSTICOS
 function renderCards() {
   const grid = document.getElementById('professionals-grid');
   if (!grid) return;
@@ -158,7 +167,7 @@ function sendMessage() {
   setTimeout(() => {
     chatMessages.push({ 
       sender: 'pro', 
-      text: 'Entendido! Poderia me passar mais detalhes do local para eu te enviar um orçamento prévio?' 
+      text: 'Perfeito! Qual seria o dia ideal para você e o tamanho do local para combinarmos o valor da diária?' 
     });
     renderChat();
   }, 1000);

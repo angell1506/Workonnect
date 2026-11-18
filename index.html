@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WorKonnect - Conectando Pessoas, Criando Oportunidades</title>
+  <title>WorKonnect - Serviços Domésticos e Renda Extra</title>
   <link rel="stylesheet" href="style/style.css">
   <!-- Ícones SVG modernos via Lucide -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -18,7 +18,7 @@
     </div>
     <nav>
       <button class="nav-btn active" onclick="switchTab('home', this)">Início</button>
-      <button class="nav-btn" onclick="switchTab('search', this)">Buscar Profissionais</button>
+      <button class="nav-btn" onclick="switchTab('search', this)">Serviços Domésticos</button>
       <button class="nav-btn" onclick="switchTab('chat', this)">Chat ao Vivo</button>
       <button class="nav-btn" onclick="switchTab('reviews', this)">Avaliações (MVP)</button>
       <button class="nav-btn" onclick="switchTab('dashboard', this)">Painel Startup</button>
@@ -30,43 +30,44 @@
     <!-- ABA 1: INÍCIO -->
     <section id="tab-home" class="tab-content active">
       <div class="hero">
-        <h1>Conectando profissionais a quem precisa de serviços</h1>
-        <p>A plataforma que aproxima clientes e prestadores com segurança, verificação e transparência.</p>
-        <button class="btn-primary" onclick="switchTabByName('search')">Encontrar Profissionais Agora</button>
+        <h1>Conectando necessidades domésticas a quem busca renda extra</h1>
+        <p>A plataforma que aproxima pessoas que precisam de ajuda em casa a prestadores locais com segurança, verificação e praticidade.</p>
+        <button class="btn-primary" onclick="switchTabByName('search')">Encontrar Ajudante Doméstico</button>
       </div>
 
       <div class="grid-3">
         <div class="card card-feature">
           <i data-lucide="user-check" class="card-icon"></i>
-          <h3>Perfis Verificados</h3>
-          <p>Processo de verificação simples e transparente para garantir a confiança da comunidade.</p>
+          <h3>Ajudantes Verificados</h3>
+          <p>Cadastro simplificado e checado para dar total tranquilidade a quem contrata e a quem trabalha.</p>
         </div>
         <div class="card card-feature">
           <i data-lucide="star" class="card-icon"></i>
           <h3>Avaliação Transparente</h3>
-          <p>Sistema de classificação de até 5 estrelas e feedbacks reais após cada serviço concluído.</p>
+          <p>Sistema de notas de até 5 estrelas e feedbacks reais após cada tarefa concluída na residência.</p>
         </div>
         <div class="card card-feature">
           <i data-lucide="messages-square" class="card-icon"></i>
           <h3>Contato Direto</h3>
-          <p>Chat integrado no aplicativo para negociação rápida de horários e orçamentos.</p>
+          <p>Chat integrado para combinar horários, detalhes da casa e valores de forma rápida e direta.</p>
         </div>
       </div>
     </section>
 
-    <!-- ABA 2: BUSCA DE PROFISSIONAIS -->
+    <!-- ABA 2: BUSCA DE SERVIÇOS DOMÉSTICOS -->
     <section id="tab-search" class="tab-content">
-      <h2>Encontre o Profissional Ideal</h2>
+      <h2>Encontre Ajudantes Domésticos</h2>
       <div class="search-bar-container">
         <div class="input-group">
           <i data-lucide="search"></i>
-          <input type="text" id="search-input" placeholder="Buscar por nome ou palavras-chave (ex: fiação, reforço, barba)..." onkeyup="renderCards()">
+          <input type="text" id="search-input" placeholder="Buscar por serviço doméstico (ex: diária, passar roupa, jardim, faxina)..." onkeyup="renderCards()">
         </div>
         <select id="category-select" onchange="renderCards()">
-          <option value="todos">Todas as Categorias</option>
-          <option value="reparos">Reparos e Manutenção</option>
-          <option value="aulas">Aulas e Reforço</option>
-          <option value="cuidados">Cuidados Pessoais</option>
+          <option value="todos">Todas as Tarefas</option>
+          <option value="limpeza">Limpeza e Faxina</option>
+          <option value="passadoria">Passadoria e Roupa</option>
+          <option value="manutencao">Pequenos Reparos da Casa</option>
+          <option value="jardim">Jardim e Quintal</option>
         </select>
       </div>
 
@@ -77,16 +78,16 @@
 
     <!-- ABA 3: CHAT AO VIVO -->
     <section id="tab-chat" class="tab-content">
-      <h2>Chat de Atendimento e Negociação</h2>
+      <h2>Chat de Negociação de Tarefas</h2>
       <div class="chat-wrapper">
         <div class="chat-header" id="chat-header-title">
-          Conversando com: Carlos Silva (Eletricista Residencial)
+          Conversando com: Maria das Graças (Diarista e Limpeza Pesada)
         </div>
         <div class="chat-box" id="chat-box">
           <!-- JS irá preencher -->
         </div>
         <div class="chat-input-area">
-          <input type="text" id="chat-input" placeholder="Digite sua mensagem para o profissional..." onkeypress="handleKeyPress(event)">
+          <input type="text" id="chat-input" placeholder="Digite sua mensagem para combinar o serviço..." onkeypress="handleKeyPress(event)">
           <button class="btn-primary" onclick="sendMessage()">
             <i data-lucide="send" style="width:16px; height:16px; display:inline-block; vertical-align:middle;"></i> Enviar
           </button>
@@ -97,7 +98,7 @@
     <!-- ABA 4: AVALIAÇÕES DO MVP -->
     <section id="tab-reviews" class="tab-content">
       <h2>Feedbacks e Validação dos Usuários</h2>
-      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Comentários reais coletados na fase de testes iniciais do protótipo:</p>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Comentários reais adaptados à proposta de serviços domésticos e renda extra:</p>
       <div class="grid-3" id="reviews-grid">
         <!-- JS irá preencher -->
       </div>
@@ -122,7 +123,7 @@
         </div>
         <div class="metric-box">
           <h4>Meta Inicial</h4>
-          <p>50 Profissionais / 100 Clientes</p>
+          <p>50 Ajudantes / 100 Contratantes</p>
         </div>
       </div>
 
@@ -135,7 +136,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2026 WorKonnect - Conectando pessoas, criando oportunidades.</p>
+    <p>&copy; 2026 WorKonnect - Conectando pessoas, criando oportunidades em trabalhos domésticos.</p>
   </footer>
 
   <script src="java/app.js"></script>
