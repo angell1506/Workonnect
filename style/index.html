@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WorKonnect - Conectando Pessoas, Criando Oportunidades</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- CABEÇALHO E NAVEGAÇÃO -->
+  <header class="navbar">
+    <div class="logo">
+      <i class="fa-solid fa-handshake"></i>
+      <span>WorK<b>onnect</b></span>
+    </div>
+    <nav>
+      <button class="nav-btn active" onclick="switchTab('home')">Início</button>
+      <button class="nav-btn" onclick="switchTab('search')">Buscar Profissionais</button>
+      <button class="nav-btn" onclick="switchTab('chat')">Chat ao Vivo</button>
+      <button class="nav-btn" onclick="switchTab('reviews')">Avaliações (MVP)</button>
+      <button class="nav-btn" onclick="switchTab('dashboard')">Painel Startup</button>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- ABA 1: INÍCIO -->
+    <section id="tab-home" class="tab-content active">
+      <div class="hero">
+        <h1>Conectando profissionais a quem precisa de serviços</h1>
+        <p>A plataforma que aproxima clientes e prestadores com segurança, verificação e transparência.</p>
+        <button class="btn-primary" onclick="switchTab('search')">Encontrar Profissionais Agora</button>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <i class="fa-solid fa-user-check card-icon"></i>
+          <h3>Perfis Verificados</h3>
+          <p>Processo de verificação simples e transparente para garantir a confiança da comunidade.</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-star card-icon"></i>
+          <h3>Avaliação Transparente</h3>
+          <p>Sistema de classificação de até 5 estrelas e feedbacks reais após cada serviço concluído.</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-comments card-icon"></i>
+          <h3>Contato Direto</h3>
+          <p>Chat integrado no aplicativo para negociação rápida de horários e orçamentos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABA 2: BUSCA DE PROFISSIONAIS -->
+    <section id="tab-search" class="tab-content">
+      <h2>Encontre o Profissional Ideal</h2>
+      <div class="search-bar-container">
+        <div class="input-group">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="search-input" placeholder="Buscar por nome ou palavras-chave (ex: fiação, reforço, barba)..." onkeyup="renderCards()">
+        </div>
+        <select id="category-select" onchange="renderCards()">
+          <option value="todos">Todas as Categorias</option>
+          <option value="reparos">Reparos e Manutenção</option>
+          <option value="aulas">Aulas e Reforço</option>
+          <option value="cuidados">Cuidados Pessoais</option>
+        </select>
+      </div>
+
+      <div id="professionals-grid" class="grid-3">
+        <!-- Renderizado dinamicamente via JS -->
+      </div>
+    </section>
+
+    <!-- ABA 3: CHAT AO VIVO -->
+    <section id="tab-chat" class="tab-content">
+      <h2>Chat de Atendimento e Negociação</h2>
+      <div class="chat-wrapper">
+        <div class="chat-header" id="chat-header-title">
+          Conversando com: Carlos Silva (Eletricista Residencial)
+        </div>
+        <div class="chat-box" id="chat-box">
+          <!-- Mensagens renderizadas dinamicamente via JS -->
+        </div>
+        <div class="chat-input-area">
+          <input type="text" id="chat-input" placeholder="Digite sua mensagem para o profissional..." onkeypress="handleKeyPress(event)">
+          <button class="btn-primary" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i> Enviar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABA 4: AVALIAÇÕES DO MVP -->
+    <section id="tab-reviews" class="tab-content">
+      <h2>Feedbacks e Validação dos Usuários</h2>
+      <p>Comentários reais coletados na fase de testes iniciais do protótipo:</p>
+      <div class="grid-3" id="reviews-grid">
+        <!-- Renderizado dinamicamente via JS -->
+      </div>
+    </section>
+
+    <!-- ABA 5: PAINEL DA STARTUP -->
+    <section id="tab-dashboard" class="tab-content">
+      <h2>Painel Institucional WorKonnect</h2>
+      
+      <div class="metrics-grid">
+        <div class="metric-box">
+          <h4>Investimento Estimado MVP</h4>
+          <p>R$ 5.000,00</p>
+        </div>
+        <div class="metric-box">
+          <h4>Custo Mensal Estimado</h4>
+          <p>R$ 500,00</p>
+        </div>
+        <div class="metric-box">
+          <h4>Receita Projetada</h4>
+          <p>R$ 698,00 / mês</p>
+        </div>
+        <div class="metric-box">
+          <h4>Meta Inicial</h4>
+          <p>50 Profissionais / 100 Clientes</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 30px;">Equipe de Fundadores</h3>
+      <div class="founders-list" id="founders-list">
+        <!-- Renderizado dinamicamente via JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 WorKonnect - Conectando pessoas, criando oportunidades.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
