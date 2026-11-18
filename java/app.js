@@ -29,7 +29,7 @@ const professionalsData = [
   }
 ];
 
-// DADOS DOS TESTADORES / FEEDBACKS (Retirados do slide do MVP)
+// DADOS DOS TESTADORES / FEEDBACKS (Slide 9 do MVP)
 const reviewsData = [
   {
     author: "Sibelle Ramos",
@@ -48,7 +48,7 @@ const reviewsData = [
   }
 ];
 
-// INTEGRANTES DA STARTUP
+// INTEGRANTES DA STARTUP (Slide 1)
 const foundersData = [
   "Emanuely de Sousa",
   "Jean Gabriel",
@@ -57,23 +57,34 @@ const foundersData = [
   "Vitor do Amaral"
 ];
 
-// HISTÓRICO DE MENSAGENS DO CHAT SIMULADO
+// MENSAGENS SIMULADAS
 let chatMessages = [
   { sender: "pro", text: "Olá! Sou o Carlos Silva. Como posso te ajudar com o serviço elétrico hoje?" }
 ];
 
-// NAVEGAÇÃO ENTRE ABAS
-function switchTab(tabId) {
+// TROCA DE ABAS
+function switchTab(tabId, btnElement) {
   document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
 
   document.getElementById(`tab-${tabId}`).classList.add('active');
-  event.target.classList.add('active');
+  if (btnElement) {
+    btnElement.classList.add('active');
+  }
 }
 
-// RENDERIZAÇÃO DOS PROFISSIONAIS (Com busca e palavra-chave)
+function switchTabByName(tabId) {
+  const buttons = document.querySelectorAll('.nav-btn');
+  let targetBtn = null;
+  if (tabId === 'search') targetBtn = buttons[1];
+
+  switchTab(tabId, targetBtn);
+}
+
+// RENDERIZAR CARDS DOS PROFISSIONAIS
 function renderCards() {
   const grid = document.getElementById('professionals-grid');
+  if (!grid) return;
   const searchText = document.getElementById('search-input').value.toLowerCase();
   const selectedCategory = document.getElementById('category-select').value;
 
@@ -89,19 +100,20 @@ function renderCards() {
     <div class="card">
       <h3>${pro.name}</h3>
       <div class="stars">${'★'.repeat(pro.rating)}${'☆'.repeat(5 - pro.rating)}</div>
-      <p><b>Local:</b> ${pro.location}</p>
-      <p style="margin-top: 0.5rem;">${pro.desc}</p>
+      <p style="margin-bottom: 0.4rem;"><b>Local:</b> ${pro.location}</p>
+      <p>${pro.desc}</p>
       <div class="keywords">
         ${pro.keywords.map(kw => `<span class="tag">#${kw}</span>`).join('')}
       </div>
-      <button class="btn-primary" style="width: 100%; margin-top: 1rem;" onclick="openChat('${pro.name}')">Iniciar Chat</button>
+      <button class="btn-primary" style="width: 100%; margin-top: 1.25rem;" onclick="openChat('${pro.name}')">Iniciar Chat</button>
     </div>
   `).join('');
 }
 
-// RENDERIZAÇÃO DE FEEDBACKS
+// RENDERIZAR FEEDBACKS
 function renderReviews() {
   const grid = document.getElementById('reviews-grid');
+  if (!grid) return;
   grid.innerHTML = reviewsData.map(rev => `
     <div class="card">
       <h3>${rev.author}</h3>
@@ -111,19 +123,21 @@ function renderReviews() {
   `).join('');
 }
 
-// RENDERIZAÇÃO DOS INTEGRANTES
+// RENDERIZAR FUNDADORES
 function renderFounders() {
   const list = document.getElementById('founders-list');
+  if (!list) return;
   list.innerHTML = foundersData.map(name => `
     <div class="founder-badge">
-      <i class="fa-solid fa-user"></i> ${name}
+      <i data-lucide="user"></i> ${name}
     </div>
   `).join('');
 }
 
-// LOGICA DO CHAT INTERATIVO
+// RENDERIZAR CHAT
 function renderChat() {
   const box = document.getElementById('chat-box');
+  if (!box) return;
   box.innerHTML = chatMessages.map(msg => `
     <div class="chat-bubble ${msg.sender}">
       ${msg.text}
@@ -141,7 +155,6 @@ function sendMessage() {
   input.value = '';
   renderChat();
 
-  // Resposta automática simulada do backend/prestador
   setTimeout(() => {
     chatMessages.push({ 
       sender: 'pro', 
@@ -157,13 +170,19 @@ function handleKeyPress(e) {
 
 function openChat(proName) {
   document.getElementById('chat-header-title').innerText = `Conversando com: ${proName}`;
-  switchTab('chat');
+  const chatBtn = document.querySelectorAll('.nav-btn')[2];
+  switchTab('chat', chatBtn);
 }
 
-// INICIALIZAÇÃO DA APLICAÇÃO
+// INICIALIZAÇÃO E CARREGAMENTO DE ÍCONES
 document.addEventListener('DOMContentLoaded', () => {
   renderCards();
   renderReviews();
   renderFounders();
   renderChat();
+  
+  // Renderizar ícones do Lucide
+  if (window.lucide) {
+    lucide.createIcons();
+  }
 });

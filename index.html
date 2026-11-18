@@ -4,23 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WorKonnect - Conectando Pessoas, Criando Oportunidades</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style/style.css">
+  <!-- Ícones SVG modernos via Lucide -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
-  <!-- CABEÇALHO E NAVEGAÇÃO -->
+  <!-- CABEÇALHO -->
   <header class="navbar">
     <div class="logo">
-      <i class="fa-solid fa-handshake"></i>
+      <i data-lucide="handshake"></i>
       <span>WorK<b>onnect</b></span>
     </div>
     <nav>
-      <button class="nav-btn active" onclick="switchTab('home')">Início</button>
-      <button class="nav-btn" onclick="switchTab('search')">Buscar Profissionais</button>
-      <button class="nav-btn" onclick="switchTab('chat')">Chat ao Vivo</button>
-      <button class="nav-btn" onclick="switchTab('reviews')">Avaliações (MVP)</button>
-      <button class="nav-btn" onclick="switchTab('dashboard')">Painel Startup</button>
+      <button class="nav-btn active" onclick="switchTab('home', this)">Início</button>
+      <button class="nav-btn" onclick="switchTab('search', this)">Buscar Profissionais</button>
+      <button class="nav-btn" onclick="switchTab('chat', this)">Chat ao Vivo</button>
+      <button class="nav-btn" onclick="switchTab('reviews', this)">Avaliações (MVP)</button>
+      <button class="nav-btn" onclick="switchTab('dashboard', this)">Painel Startup</button>
     </nav>
   </header>
 
@@ -31,22 +32,22 @@
       <div class="hero">
         <h1>Conectando profissionais a quem precisa de serviços</h1>
         <p>A plataforma que aproxima clientes e prestadores com segurança, verificação e transparência.</p>
-        <button class="btn-primary" onclick="switchTab('search')">Encontrar Profissionais Agora</button>
+        <button class="btn-primary" onclick="switchTabByName('search')">Encontrar Profissionais Agora</button>
       </div>
 
       <div class="grid-3">
-        <div class="card">
-          <i class="fa-solid fa-user-check card-icon"></i>
+        <div class="card card-feature">
+          <i data-lucide="user-check" class="card-icon"></i>
           <h3>Perfis Verificados</h3>
           <p>Processo de verificação simples e transparente para garantir a confiança da comunidade.</p>
         </div>
-        <div class="card">
-          <i class="fa-solid fa-star card-icon"></i>
+        <div class="card card-feature">
+          <i data-lucide="star" class="card-icon"></i>
           <h3>Avaliação Transparente</h3>
           <p>Sistema de classificação de até 5 estrelas e feedbacks reais após cada serviço concluído.</p>
         </div>
-        <div class="card">
-          <i class="fa-solid fa-comments card-icon"></i>
+        <div class="card card-feature">
+          <i data-lucide="messages-square" class="card-icon"></i>
           <h3>Contato Direto</h3>
           <p>Chat integrado no aplicativo para negociação rápida de horários e orçamentos.</p>
         </div>
@@ -58,7 +59,7 @@
       <h2>Encontre o Profissional Ideal</h2>
       <div class="search-bar-container">
         <div class="input-group">
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <i data-lucide="search"></i>
           <input type="text" id="search-input" placeholder="Buscar por nome ou palavras-chave (ex: fiação, reforço, barba)..." onkeyup="renderCards()">
         </div>
         <select id="category-select" onchange="renderCards()">
@@ -70,7 +71,7 @@
       </div>
 
       <div id="professionals-grid" class="grid-3">
-        <!-- Renderizado dinamicamente via JS -->
+        <!-- JS irá preencher -->
       </div>
     </section>
 
@@ -82,11 +83,13 @@
           Conversando com: Carlos Silva (Eletricista Residencial)
         </div>
         <div class="chat-box" id="chat-box">
-          <!-- Mensagens renderizadas dinamicamente via JS -->
+          <!-- JS irá preencher -->
         </div>
         <div class="chat-input-area">
           <input type="text" id="chat-input" placeholder="Digite sua mensagem para o profissional..." onkeypress="handleKeyPress(event)">
-          <button class="btn-primary" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i> Enviar</button>
+          <button class="btn-primary" onclick="sendMessage()">
+            <i data-lucide="send" style="width:16px; height:16px; display:inline-block; vertical-align:middle;"></i> Enviar
+          </button>
         </div>
       </div>
     </section>
@@ -94,9 +97,9 @@
     <!-- ABA 4: AVALIAÇÕES DO MVP -->
     <section id="tab-reviews" class="tab-content">
       <h2>Feedbacks e Validação dos Usuários</h2>
-      <p>Comentários reais coletados na fase de testes iniciais do protótipo:</p>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Comentários reais coletados na fase de testes iniciais do protótipo:</p>
       <div class="grid-3" id="reviews-grid">
-        <!-- Renderizado dinamicamente via JS -->
+        <!-- JS irá preencher -->
       </div>
     </section>
 
@@ -123,9 +126,9 @@
         </div>
       </div>
 
-      <h3 style="margin-top: 30px;">Equipe de Fundadores</h3>
+      <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Equipe de Fundadores</h3>
       <div class="founders-list" id="founders-list">
-        <!-- Renderizado dinamicamente via JS -->
+        <!-- JS irá preencher -->
       </div>
     </section>
 
@@ -135,6 +138,6 @@
     <p>&copy; 2026 WorKonnect - Conectando pessoas, criando oportunidades.</p>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="java/app.js"></script>
 </body>
 </html>
